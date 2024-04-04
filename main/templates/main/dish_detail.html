@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-
+{% load mediapath_tag %}
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
@@ -7,7 +7,7 @@
             <h1>{{ dish.name }}</h1>
             <p>Цена: {{ dish.price }}</p>
             <p>Описание: {{ dish.description }}</p>
-            <img src="{{ dish.photo.url }}" alt="Cake Image" class="img-fluid" style="max-width: 50%; max-height: 300px; display: block; margin: 0 auto;">
+            <img src="{% mediapath dish.photo %}" alt="Cake Image" class="img-fluid" style="max-width: 50%; max-height: 300px; display: block; margin: 0 auto;"/>
         </div>
     </div>
 </div>

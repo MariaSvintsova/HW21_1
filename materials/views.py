@@ -12,6 +12,7 @@ class MaterialCreateView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('materials:list')
     success_message = "Материал успешно создан!"
 
+
     def form_valid(self, form):
         if form.is_valid():
             new_mat = form.save()

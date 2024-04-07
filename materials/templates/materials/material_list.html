@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="col-12 mb-5">
+    <a class="btn btn-outline-primary" href="{% url 'materials:create' %}">Добавить материал</a>
+</div>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+    <p class="lead">Skystore - это отличный вариант хранения ваших плагинов и примеров кода, который вы бы хотели
+        продать</p>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+        {% for material in object_list %}
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <p class="card-text">
+                    {{ material.title }}
+                    </p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                    {{ material.body }}
+                    </p>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'materials:view' material.pk %}"
+                               class="btn btn-sm btn-outline-secondary">View</a>
+                            <a href="{% url 'materials:edit' material.pk %}" type="button"
+                               class="btn btn-sm btn-outline-secondary">Edit</a>
+                            <a href="{% url 'materials:delete' material.pk %}" type="button"
+                               class="btn btn-sm btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

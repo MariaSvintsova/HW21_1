@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="col-12"></div>
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_title">Название:</label>
+                                {{ form.title }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_slug">Slug:</label>
+                                {{ form.slug }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_body">Содержимое:</label>
+                                {{ form.body }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_preview">Изображение:</label>
+                                {{ form.preview }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_created_at">Дата создания:</label>
+                                {{ form.created_at }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_is_published">Опубликовано:</label>
+                                {{ form.is_published }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_views_count">Количество просмотров:</label>
+                                {{ form.views_count }}
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                {% if object %}
+                                    Сохранить
+                                {% else %}
+                                    Создать
+                                {% endif %}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

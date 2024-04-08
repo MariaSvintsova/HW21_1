@@ -31,4 +31,3 @@ class Dish(models.Model):
     class Meta:
         verbose_name = 'Вещь'
         verbose_name_plural = 'Предметы'
-

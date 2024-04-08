@@ -3,39 +3,24 @@ from django.views.generic import ListView, DetailView
 
 from main.models import Dish
 
+
 class DishListView(ListView):
     model = Dish
-    template_name = 'main/material_list.html'
-    context_object_name = 'object_list'
+    template_name = 'main/home.html'
+    object_list = Dish.objects.all()
+    context_object_name = f'{object_list}'
     extra_context = {'title': 'SkyStore'}
 
 
-# def contact(request):
-#     if request.method == "POST":
-#         name = request.POST.get('name')
-#         email = request.POST.get('email')
-#         message = request.POST.get('message')
-#         print(f'{name}, ({email}): {message}')
-#
-#     context = {
-#         'title': 'Контакты'
-#     }
-#     return render(request, 'main/contacts.html', context)
-
-class ContactDetailView(DetailView):
-    template_name = 'main/contacts.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Контакты'
-        return context
-
-    def post(self, request, *args, **kwargs):
+def contacts(request):
+    if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
+        phone = request.POST.get('phone')
         message = request.POST.get('message')
-        print(f'{name}, ({email}): {message}')
-        return self.render_to_response(self.get_context_data())
+        print(f'{name},{phone} ({email}): {message}')
+    return render(request, 'main/contacts.html')
+
 
 class DishDetailView(DetailView):
     model = Dish
